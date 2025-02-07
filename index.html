@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map with Overlay</title>
+    <title>Map with Interactive Overlay</title>
     <style>
         #map {
             width: 100%;
@@ -20,6 +20,17 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             z-index: 10; /* Ensure overlay is above the map */
+            display: none; /* Initially hidden */
+        }
+        .link {
+            color: #2962FF;
+            cursor: pointer;
+            text-decoration: underline;
+            margin: 10px;
+            display: inline-block;
+        }
+        .link:hover {
+            color: #0039CB;
         }
     </style>
 </head>
@@ -28,11 +39,37 @@
 <div id="map">
     <!-- This is where your map would be rendered -->
     <div id="overlay">
-        <!-- Content from GitHub or any other source -->
         <h3>Overlay Content</h3>
         <p>This content is displayed on top of the map.</p>
     </div>
 </div>
+
+<div>
+    <span class="link" data-content="This is the first piece of content.">Show Content 1</span>
+    <span class="link" data-content="This is the second piece of content.">Show Content 2</span>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.link');
+        const overlay = document.getElementById('overlay');
+
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                const content = this.getAttribute('data-content');
+                overlay.innerHTML = `<h3>Overlay Content</h3><p>${content}</p>`;
+                overlay.style.display = 'block';
+            });
+        });
+
+        // Optional: Hide overlay when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.classList.contains('link') && !overlay.contains(event.target)) {
+                overlay.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
