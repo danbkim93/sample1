@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Overlay</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+            background-color: #e0e0e0; /* Placeholder for map */
+            position: relative;
+        }
+        #overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 10; /* Ensure overlay is above the map */
+        }
+    </style>
+</head>
+<body>
+
+<div id="map">
+    <!-- This is where your map would be rendered -->
+    <div id="overlay">
+        <!-- Content from GitHub or any other source -->
+        <h3>Overlay Content</h3>
+        <p>This content is displayed on top of the map.</p>
+    </div>
+</div>
+
+</body>
+</html>
